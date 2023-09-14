@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#615dad, #ffc8da);
+}
+
+h1 {
+  font-family: 'Lobster';
+}
