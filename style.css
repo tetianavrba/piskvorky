@@ -12,7 +12,6 @@ html {
 
 body {
   box-sizing: border-box;
-  width: 100vw;
   height: 100vh;
   background: linear-gradient(#615dad, #ffc8da);
 }
@@ -50,6 +49,8 @@ body {
   display: flex;
   gap: 1px;
   flex-direction: column;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 a {
