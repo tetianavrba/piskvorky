@@ -95,3 +95,98 @@ a {
     width: 400px;
   }
 }
+
+/*.......Hra ukol 2........*/
+
+
+.container-game {
+  max-width: 80vmin;
+  margin: auto;
+}
+
+.game-tiitle {
+  margin: 0;
+  padding-top: 5px;
+  font-family: 'Lobster';
+  font-size: 60px;
+  color: #fff;
+  text-align: center;
+
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -15px;
+
+}
+
+.menu-items {
+  display: flex;
+}
+
+.menu-items__play {
+  color: #fff;
+  font-size: 28px;
+  text-transform: uppercase;
+  padding-right: 5px;
+
+}
+
+.menu-icons {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-icon {
+  padding: 0 0 0 8px;
+}
+
+.menu-icon__home {
+  background-color: #1fcca4;
+  border-radius: 3px;
+  width: 35px;
+  padding: 5px;
+
+}
+
+.menu-icon__home:hover {
+  background-color: #1cbb96;
+
+}
+
+.menu-icon__restart {
+  background-color: #0197f6;
+  border-radius: 3px;
+  width: 35px;
+  padding: 5px;
+}
+
+.menu-icon__restart:hover {
+  background-color: #0090e9;
+}
+
+.game-buttons {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  border: 1px solid #233142;
+  opacity: 0.6;
+  width: 80vmin;
+  height: 80vmin;
+
+}
+
+.game-buttons__cell {
+  cursor: pointer;
+  border: 1px solid #233142;
+
+}
+
+.game-buttons__cell:hover {
+  background-color: #d0bdd1
+}
+
+.game-buttons__cell:focus {
+  background-color: #e1d3e3;
+}
