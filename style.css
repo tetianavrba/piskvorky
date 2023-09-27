@@ -156,6 +156,10 @@ a {
 
 }
 
+.menu-icon__home:focus {
+  background-color: #1cbb96;
+}
+
 .menu-icon__restart {
   background-color: #0197f6;
   border-radius: 3px;
@@ -164,6 +168,10 @@ a {
 }
 
 .menu-icon__restart:hover {
+  background-color: #0090e9;
+}
+
+.menu-icon__restart:focus {
   background-color: #0090e9;
 }
 
