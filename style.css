@@ -175,7 +175,7 @@ a {
   background-color: #0090e9;
 }
 
-.game-buttons {
+.game-table {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   border: 1px solid #233142;
@@ -197,4 +197,22 @@ a {
 
 .game-buttons__cell:focus {
   background-color: #e3d0e0;
+}
+
+/*......Ukol3 kolečko, křížek......*/
+
+.game-buttons__circle {
+  background-image: url(img/circle.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+
+}
+
+.game-buttons__cross {
+  background-image: url(img/cross.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+
 }
