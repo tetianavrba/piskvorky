@@ -175,7 +175,7 @@ a {
   background-color: #0090e9;
 }
 
-.game-table {
+.game-buttons {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   border: 1px solid #233142;
@@ -202,17 +202,42 @@ a {
 /*......Ukol3 kolečko, křížek......*/
 
 .game-buttons__circle {
-  background-image: url(img/circle.svg);
+  background-image: url(img/circle_hra.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+
+
+}
+
+.game-buttons__circle:hover {
+  background-size: 80%;
+  transition: background-size 0.45s ease;
+
+}
+
+
+.game-buttons__cross {
+  background-image: url(img/cross_hra.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
 
 }
 
-.game-buttons__cross {
-  background-image: url(img/cross.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80%;
 
+
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
