@@ -1,3 +1,6 @@
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
+
+const policka = document.querySelectorAll('.game-buttons');
 let currentPlayer = 'circle';
 
 const play = (event) => {
@@ -14,18 +17,11 @@ const play = (event) => {
   }
 };
 
-document.querySelector('button:nth-child(1)').addEventListener('click', play);
-document.querySelector('button:nth-child(2)').addEventListener('click', play);
-document.querySelector('button:nth-child(3)').addEventListener('click', play);
-document.querySelector('button:nth-child(4)').addEventListener('click', play);
-document.querySelector('button:nth-child(5)').addEventListener('click', play);
-document.querySelector('button:nth-child(6)').addEventListener('click', play);
-document.querySelector('button:nth-child(7)').addEventListener('click', play);
-document.querySelector('button:nth-child(8)').addEventListener('click', play);
-document.querySelector('button:nth-child(9)').addEventListener('click', play);
-document.querySelector('button:nth-child(10)').addEventListener('click', play);
+policka.forEach((button) => {
+  button.addEventListener('click', play);
+});
 
-//Bonus
+//Bonus ukol 2
 
 const homeElement = document.querySelector('#home');
 const reboot = (event) => {
