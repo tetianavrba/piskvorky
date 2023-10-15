@@ -1,6 +1,7 @@
 import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
 
-const policka = document.querySelectorAll('.game-buttons');
+const policka = document.querySelectorAll('.game-buttons__cell');
+const herniPole = [];
 let currentPlayer = 'circle';
 
 const play = (event) => {
@@ -15,12 +16,8 @@ const play = (event) => {
     currentPlayer = 'circle';
     event.target.disabled = true;
   }
+  kdoVyhraje();
 };
-
-policka.forEach((button) => {
-  button.addEventListener('click', play);
-});
-
 //Bonus ukol 2
 
 const homeElement = document.querySelector('#home');
@@ -31,3 +28,41 @@ const reboot = (event) => {
   }
 };
 homeElement.addEventListener('click', reboot);
+
+//Posluchač události na kliknutí pro všechni policka.
+
+policka.forEach((button) => {
+  button.addEventListener('click', play);
+});
+
+//Pole řetězců pro funkci findWinner.
+
+const kdoVyhraje = () => {
+  const herniPole = [];
+  policka.forEach((button) => {
+    if (button.classList.contains('game-buttons__circle')) {
+      herniPole.push('o');
+    } else if (button.classList.contains('game-buttons__cross')) {
+      herniPole.push('x');
+    } else {
+      herniPole.push('_');
+    }
+  });
+
+  // Volani funkce findWinner a časovač nového okna
+
+  const vitez = findWinner(herniPole);
+
+  if (vitez === 'o' || vitez === 'x') {
+    alert(`Vyhrál hráč se symbolem ${vitez}.`);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }
+  if (vitez === 'tie') {
+    alert(`Hra skončila remizou.`);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }
+};
