@@ -4,20 +4,47 @@ const policka = document.querySelectorAll('.game-buttons__cell');
 const herniPole = [];
 let currentPlayer = 'circle';
 
-const play = (event) => {
+const play = async (event) => {
+  //aby během čekání na Api  uživatel nemohl klikat na další políčka.
+
   if (currentPlayer === 'circle') {
     event.target.classList.add('game-buttons__circle');
     document.querySelector('#circle_cross').src = 'img/cross.svg';
     currentPlayer = 'cross';
     event.target.disabled = true;
-  } else {
+
+    if (kdoVyhraje()) {
+      const herniPole = novePole(); //vytvoří pole reprezentující aktuální stav herního pole,
+      const response = await fetch(
+        'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+        {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            board: herniPole,
+            player: 'x',
+          }),
+        },
+      );
+      const data = await response.json();
+      const { x, y } = data.position;
+      const field = policka[x + y * 10];
+      field.click();
+    }
+  } else if (currentPlayer == 'cross') {
     event.target.classList.add('game-buttons__cross');
     document.querySelector('#circle_cross').src = 'img/circle.svg';
     currentPlayer = 'circle';
     event.target.disabled = true;
   }
-  kdoVyhraje();
 };
+// Posluchač události na kliknutí pro všechni policka.
+policka.forEach((button) => {
+  button.addEventListener('click', play);
+});
+
 //Bonus ukol 2
 
 const homeElement = document.querySelector('#home');
@@ -29,15 +56,7 @@ const reboot = (event) => {
 };
 homeElement.addEventListener('click', reboot);
 
-//Posluchač události na kliknutí pro všechni policka.
-
-policka.forEach((button) => {
-  button.addEventListener('click', play);
-});
-
-//Pole řetězců pro funkci findWinner.
-
-const kdoVyhraje = () => {
+const novePole = () => {
   const herniPole = [];
   policka.forEach((button) => {
     if (button.classList.contains('game-buttons__circle')) {
@@ -48,21 +67,19 @@ const kdoVyhraje = () => {
       herniPole.push('_');
     }
   });
-
-  // Volani funkce findWinner a časovač nového okna
+  return herniPole;
+};
+const kdoVyhraje = () => {
+  const herniPole = novePole();
 
   const vitez = findWinner(herniPole);
-
   if (vitez === 'o' || vitez === 'x') {
     alert(`Vyhrál hráč se symbolem ${vitez}.`);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    setTimeout(window.location.reload(), 1000);
   }
   if (vitez === 'tie') {
     alert(`Hra skončila remizou.`);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    setTimeout(window.location.reload(), 1000);
   }
+  return true;
 };
