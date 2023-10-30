@@ -74,12 +74,18 @@ const kdoVyhraje = () => {
 
   const vitez = findWinner(herniPole);
   if (vitez === 'o' || vitez === 'x') {
-    alert(`Vyhrál hráč se symbolem ${vitez}.`);
-    setTimeout(window.location.reload(), 1000);
+    const winnerAlert = () => {
+      alert(`Vyhrál hráč se symbolem ${vitez}.`);
+      window.location.reload();
+    };
+    setTimeout(winnerAlert, 1000);
   }
   if (vitez === 'tie') {
-    alert(`Hra skončila remizou.`);
-    setTimeout(window.location.reload(), 1000);
+    const tieAlert = () => {
+      alert(`Hra skončila remizou.`);
+      window.location.reload();
+    };
+    setTimeout(tieAlert, 1000);
   }
   return true;
 };
